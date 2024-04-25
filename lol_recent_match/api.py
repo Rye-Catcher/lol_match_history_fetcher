@@ -41,6 +41,11 @@ def get_match_detail(api_key, match_id):
     response = requests.get(url, headers=headers)
     return handle_http_response(response)
 
+def get_game_name_and_tag_line(api_key, puuid):
+    url = f"https://asia.api.riotgames.com/riot/account/v1/accounts/by-puuid/{puuid}"
+    headers = {'X-Riot-Token': api_key}
+    response = requests.get(url, headers=headers)
+    return handle_http_response(response)
 
 def fetch_match_history(api_key, game_name, tagline, number):
     puuid = get_puuid(api_key, game_name, tagline)

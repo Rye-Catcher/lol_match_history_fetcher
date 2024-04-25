@@ -3,7 +3,7 @@ import configparser
 import json
 import os
 import shutil
-from api import fetch_match_history
+from lol_recent_match.api import fetch_match_history
 
 def get_config_path():
     """Constructs the config file path dependent on OS."""
