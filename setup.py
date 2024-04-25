@@ -13,7 +13,6 @@ setup(
         'click',
         'configparser',
         'requests',
-        'shutil',
     ],
     entry_points={
         'console_scripts': [
