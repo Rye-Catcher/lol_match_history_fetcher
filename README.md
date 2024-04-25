@@ -52,9 +52,9 @@ lol-recent-match player --name [GAME_NAME] --tagline [TAGLINE] --number [FETCH_N
 You can obtain your game name and tagline from account detail on Riot website. `FETCH_NUMBER` is the number of records you want to fetch from your match history, from most recent to oldest (max 20).
 
 ### To-do
-:white_large_square Parse the JSON, pick useful information and export as a pdf file.
+:white_large_square: Parse the JSON, pick useful information and export as a pdf file.
 
-:white_large_square Add locale option to requesting URLs
+:white_large_square: Add locale option to requesting URLs
 
 
 
