@@ -43,6 +43,7 @@ def get_api_key():
 def cli():
     pass
 
+# TODO: number checking
 @cli.command()
 @click.argument('api_key',)
 def configure(api_key):
@@ -59,7 +60,12 @@ def configure(api_key):
             '--tagline', 
             prompt='Please enter player tagline', 
             help='Player tagline')
-def get_match(name, tagline):
+@click.option(
+            '--number',
+            default=1,
+            help='Number of recent matches to fetch',
+            )
+def get_match(name, tagline, number):
     """Get the match history of a player."""
     api_key = get_api_key()
     if not api_key:
@@ -68,7 +74,7 @@ def get_match(name, tagline):
     click.echo(f'Player Game Name: {name}')
     click.echo(f'Player Tagline: {tagline}')
     click.echo(f'Using API Key: {api_key}')
-    match_history = fetch_match_history(api_key, name, tagline)
+    match_history = fetch_match_history(api_key, name, tagline, number)
     # print(match_history)
     #write match history to a file as json
     with open('match_history.json', 'w') as f:

@@ -29,11 +29,11 @@ def get_puuid(api_key, game_name, tagline):
     return handle_http_response(response).get('puuid')
 
 # Recent 1 match ids
-def get_recent_match_ids(api_key, puuid):
+def get_recent_match_ids(api_key, puuid, number):
     url = f"https://sea.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=10"
     headers = {'X-Riot-Token': api_key}
     response = requests.get(url, headers=headers)
-    return handle_http_response(response)[:1] 
+    return handle_http_response(response)[:number] 
 
 def get_match_detail(api_key, match_id):
     url = f"https://sea.api.riotgames.com/lol/match/v5/matches/{match_id}"
@@ -42,9 +42,9 @@ def get_match_detail(api_key, match_id):
     return handle_http_response(response)
 
 
-def fetch_match_history(api_key, game_name, tagline):
+def fetch_match_history(api_key, game_name, tagline, number):
     puuid = get_puuid(api_key, game_name, tagline)
-    match_ids = get_recent_match_ids(api_key, puuid)
+    match_ids = get_recent_match_ids(api_key, puuid, number)
     match_details = []
     for match_id in match_ids:
         match_details.append(get_match_detail(api_key, match_id))
